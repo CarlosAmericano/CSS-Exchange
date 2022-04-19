@@ -340,6 +340,43 @@ Function Invoke-RemoteMain {
                 $cmdsToRun += "Copy-FullLogFullPathRecurse {0}" -f $info
             }
         }
+
+        if ($PassedInfo.TransportAgentLogs) {
+            if ($Script:localServerObject.CAS) {
+                $info = ($copyInfo -f ($Script:localServerObject.TransportInfo.FELoggingInfo.AgentLogPath), ($Script:RootCopyToDirectory + "\FE_Transport_Agent_Logs"))
+                $cmdsToRun += "Copy-LogsBasedOnTime {0}" -f $info
+            }
+
+            if ($Script:localServerObject.Hub) {
+                $info = ($copyInfo -f ($Script:localServerObject.TransportInfo.HubLoggingInfo.AgentLogPath), ($Script:RootCopyToDirectory + "\Hub_Transport_Agent_Logs"))
+                $cmdsToRun += "Copy-LogsBasedOnTime {0}" -f $info
+            }
+
+            if ($Script:localServerObject.Mailbox) {
+                $info = ($copyInfo -f ($Script:localServerObject.TransportInfo.MBXLoggingInfo.MailboxSubmissionAgentLogPath), ($Script:RootCopyToDirectory + "\Mbx_Submission_Transport_Agent_Logs"))
+                $cmdsToRun += "Copy-LogsBasedOnTime {0}" -f $info
+
+                $info = ($copyInfo -f ($Script:localServerObject.TransportInfo.MBXLoggingInfo.MailboxDeliveryAgentLogPath), ($Script:RootCopyToDirectory + "\Mbx_Delivery_Transport_Agent_Logs"))
+                $cmdsToRun += "Copy-LogsBasedOnTime {0}" -f $info
+            }
+        }
+
+        if ($PassedInfo.TransportRoutingTableLogs) {
+            if ($Script:localServerObject.CAS) {
+                $info = ($copyInfo -f ($Script:localServerObject.TransportInfo.FELoggingInfo.RoutingTableLogPath), ($Script:RootCopyToDirectory + "\FE_Transport_Routing_Table_Logs"))
+                $cmdsToRun += "Copy-LogsBasedOnTime {0}" -f $info
+            }
+
+            if ($Script:localServerObject.Hub) {
+                $info = ($copyInfo -f ($Script:localServerObject.TransportInfo.HubLoggingInfo.RoutingTableLogPath), ($Script:RootCopyToDirectory + "\Hub_Transport_Routing_Table_Logs"))
+                $cmdsToRun += "Copy-LogsBasedOnTime {0}" -f $info
+            }
+
+            if ($Script:localServerObject.Mailbox) {
+                $info = ($copyInfo -f ($Script:localServerObject.TransportInfo.MBXLoggingInfo.RoutingTableLogPath), ($Script:RootCopyToDirectory + "\Mbx_Transport_Routing_Table_Logs"))
+                $cmdsToRun += "Copy-LogsBasedOnTime {0}" -f $info
+            }
+        }
     }
 
     ############################################

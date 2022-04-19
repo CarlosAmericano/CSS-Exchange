@@ -49,7 +49,9 @@ Param (
     [switch]$SendConnectors,
     [Alias("ServerInfo")]
     [switch]$ServerInformation,
+    [switch]$TransportAgentLogs,
     [switch]$TransportConfig,
+    [switch]$TransportRoutingTableLogs,
     [switch]$WindowsSecurityLogs,
     [switch]$AcceptEULA,
     [switch]$AllPossibleLogs,

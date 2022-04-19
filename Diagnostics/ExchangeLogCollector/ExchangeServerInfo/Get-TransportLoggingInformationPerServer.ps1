@@ -25,6 +25,8 @@ Function Get-TransportLoggingInformationPerServer {
                 ReceiveProtocolLogPath = $data.ReceiveProtocolLogPath.ToString()
                 SendProtocolLogPath    = $data.SendProtocolLogPath.ToString()
                 WlmLogPath             = $data.WlmLogPath.ToString()
+                RoutingTableLogPath    = $data.RoutingTableLogPath.ToString()
+                AgentLogPath           = $data.AgentLogPath.ToString()
             }
 
             if (![string]::IsNullOrEmpty($data.QueueLogPath)) {
@@ -44,6 +46,7 @@ Function Get-TransportLoggingInformationPerServer {
                     ReceiveProtocolLogPath = $data.ReceiveProtocolLogPath.ToString()
                     SendProtocolLogPath    = $data.SendProtocolLogPath.ToString()
                     AgentLogPath           = $data.AgentLogPath.ToString()
+                    RoutingTableLogPath    = $data.RoutingTableLogPath.ToString()
                 }
                 $transportLoggingObject | Add-Member -MemberType NoteProperty -Name FELoggingInfo -Value $FETransObject
             }
@@ -57,6 +60,9 @@ Function Get-TransportLoggingInformationPerServer {
                     SendProtocolLogPath              = $data.SendProtocolLogPath.ToString()
                     PipelineTracingPath              = $data.PipelineTracingPath.ToString()
                     MailboxDeliveryThrottlingLogPath = $data.MailboxDeliveryThrottlingLogPath.ToString()
+                    MailboxDeliveryAgentLogPath      = $data.MailboxDeliveryAgentLogPath.ToString()
+                    MailboxSubmissionAgentLogPath    = $data.MailboxSubmissionAgentLogPath.ToString()
+                    RoutingTableLogPath              = $data.RoutingTableLogPath.ToString()
                 }
                 $transportLoggingObject | Add-Member -MemberType NoteProperty -Name MBXLoggingInfo -Value $mbxObject
             }
